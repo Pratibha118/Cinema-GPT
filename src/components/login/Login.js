@@ -20,7 +20,6 @@ const Login = () => {
   }
 
   const handleButtonClick = () => {
-    // console.log(email, password)
     const message = checkValidData(email?.current?.value, password?.current?.value, name?.current?.value)
     setErrorMessage(message)
     if (message) return;
@@ -69,7 +68,6 @@ const Login = () => {
           const errorCode = error.code;
           const errorMessage = error.message;
           setErrorMessage(errorCode)
-          console.log(errorMessage);
         });
     }
 
