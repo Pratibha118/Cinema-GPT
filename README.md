@@ -30,6 +30,17 @@
     - Updated trailor vedio data in store
     - Tailwind Css applied in main container
     - Embedded the youtube vedio and make it autoplay and mute.
+    - Tailwind css to design main container
+    - Build secondary component
+    - Build Movie list
+    - Build Movie card
+    - TMDB movie image CDN url
+    - usePopularMovies. upComing movies custom hooks
+    - GPT Search Page
+    - GPT Search Bar
+    - Multi- language feature in our App
+
+
 
 # Features
 - Login/Sign up
