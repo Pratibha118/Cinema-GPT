@@ -5,6 +5,7 @@ import { createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfi
 import { auth } from '../../utils/firebase';
 import { useDispatch } from 'react-redux';
 import { addUser } from '../../utils/slices/userSlice';
+import { BACKGROUND_IMG } from '../../utils/constants';
 
 const Login = () => {
   const [isUserSignIn, setIsUserSignIn] = useState(true);
@@ -79,7 +80,7 @@ const Login = () => {
       <Header />
       <div className='absolute'>
 
-        <img src='https://assets.nflxext.com/ffe/siteui/vlv3/258d0f77-2241-4282-b613-8354a7675d1a/web/IN-en-20250721-TRIFECTA-perspective_cadc8408-df6e-4313-a05d-daa9dcac139f_large.jpg'
+        <img src={BACKGROUND_IMG}
           alt='background-img' />
       </div>
 

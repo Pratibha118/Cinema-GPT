@@ -8,8 +8,6 @@ const SecondryContainer = () => {
   const topRatedMovies = useSelector(state=> state.movies.topRatedMovies)
   const upComingMovies = useSelector(state=> state.movies.upComingMovies)
 
-  console.log(upComingMovies?.results)
-
   return (
     <div className='bg-black'>
       <div className='-mt-20 relative z-20'>
