@@ -53,20 +53,30 @@ const Header = () => {
   }
 
   return (
-    <div className='absolute w-full px-8 py-2 bg-gradient-to-b from-black z-10 flex justify-between'>
+    <div className='absolute w-full px-8 py-2 bg-black opacity-80 z-10 flex flex-col md:flex-row md:justify-between '>
       <img
-        className='w-36'
+        className='w-36 mx-auto md:mx-0'
         src={LOGO}
         alt='logo' />
       {
         user ?
-          <div>
+          <div className='mx-auto md:mx-0'>
+
+            <button onClick={handleSearch}
+              className='bg-black border z-50 border-white text-white mx-2 my-4 p-1 rounded-lg shadow-sm border-none font-bold'>
+              {searchToggle ? 'Home' : 'Search'}
+            </button>
+
             {searchToggle ?
               <select onChange={handleLanguageChange}
-                className='bg-gray-700 border z-50 border-white text-white mx-2 my-4 p-1 rounded-lg shadow-sm'>
+                className='bg-black border-none z-50 border-white text-white my-4 p-1 rounded-lg shadow-sm font-bold'>
 
                 {SUPPORTED_LANGUAGES.map((lang) => {
-                  return <option key={lang.identifier} value={lang.identifier} >{lang.name}</option>
+                  return <option
+                    key={lang.identifier}
+                    value={lang.identifier}
+                  >{lang.name}
+                  </option>
                 })
 
                 }
@@ -74,13 +84,21 @@ const Header = () => {
               : <></>
             }
 
-            <button onClick={handleSearch}
-              className='bg-black border z-50 border-white text-white mx-2 my-4 p-1 rounded-lg shadow-sm'>{searchToggle ? 'Home' : 'Search'}</button>
-            <span className='text-white font-bold'>{user?.displayName}</span>
-            <button className='bg-red-600 text-white mx-2 my-4 p-1 rounded-lg shadow-sm' onClick={handleSignOut}>
-              Sign out
-            </button>
-          </div> :
+            
+            {/* <span className='text-white font-bold'>{user?.displayName}</span> */}
+
+            <select className='mx-2 my-4 p-1 bg-black text-white font-bold ' onChange={handleSignOut}>
+              <option selected>{user?.displayName}</option>
+              <option className='hover:bg-gray-600'>
+                <button className='bg-red-600 text-white mx-2 my-4 p-1 rounded-lg shadow-sm'>
+                  Sign out
+                </button>
+              </option>
+            </select>
+          </div>
+
+
+          :
           <></>
 
       }
