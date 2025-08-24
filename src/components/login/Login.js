@@ -36,7 +36,6 @@ const Login = () => {
           const user = userCredential.user;
         })
         .catch((error) => {
-          const errorCode = error.code;
           const errorMessage = error.message;
           setErrorMessage(errorMessage);
         });
@@ -56,8 +55,6 @@ const Login = () => {
             const { uid, email, displayName } = auth.currentUser;
             dispatch(addUser({ uid: uid, email: email, displayName: displayName }))
 
-            
-            alert('Successfully registered. Please sign in now.');
           }).catch((error) => {
             // An error occurred
             setErrorMessage(errorMessage);
@@ -67,7 +64,6 @@ const Login = () => {
         })
         .catch((error) => {
           const errorCode = error.code;
-          const errorMessage = error.message;
           setErrorMessage(errorCode)
         });
     }
@@ -85,7 +81,7 @@ const Login = () => {
           alt='background-img' />
       </div>
 
-      <form onSubmit={(e) => e.preventDefault()} className='w-full md:w-3/12 absolute p-12 bg-black my-36 mx-auto left-0 right-0 text-white bg-opacity-75'>
+      <form onSubmit={(e) => e.preventDefault()} className='w-full md:w-3/12 absolute p-12 bg-black my-28 mx-auto left-0 right-0 text-white bg-opacity-75'>
 
         <h1 className='font-bold text-3xl py-4'>{isUserSignIn ? 'Sign In' : 'Sign Up'}</h1>
 
@@ -106,7 +102,7 @@ const Login = () => {
         </button>
 
         <p className='py-2 text-sm cursor-pointer' onClick={toggleSignInUser}>
-          {isUserSignIn ? 'New to Netflix? Sign Up Now' : 'Already registered? Sign In Now'}
+          {isUserSignIn ? 'New to Cinema-GPT? Sign Up Now' : 'Already registered? Sign In Now'}
         </p>
 
       </form>

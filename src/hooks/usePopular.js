@@ -13,7 +13,13 @@ export const usePopular = () =>{
   const getPopularMovies = async () =>{
     const data = await fetch('https://api.themoviedb.org/3/movie/popular?language=en-US&page=1',API_OPTIONS)
     const json = await data.json();
-    dispatch(addPopularMovies(json.results))
+     const updatedData = json.results.map((movie) => {
+      return {
+        ...movie,
+        favorite: false,
+      }
+    })
+    dispatch(addPopularMovies(updatedData))
   }
 
   useEffect(()=>{
