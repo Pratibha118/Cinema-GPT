@@ -8,13 +8,14 @@ const SecondryContainer = () => {
   const topRatedMovies = useSelector(state=> state.movies.topRatedMovies)
   const upComingMovies = useSelector(state=> state.movies.upComingMovies)
 
+
   return (
     <div className='bg-black'>
-      <div className='mt-0 md:-mt-20 relative z-20'>
-        <MovieList title='Now Playing' movies={nowPlayingMovies} />
-        <MovieList title='Top Rated' movies={topRatedMovies} />
-        <MovieList title='Trending' movies={popularMovies} />
-        <MovieList title='Up Coming' movies={upComingMovies?.results} />
+      <div className='mt-0 md:-mt-32 relative z-20'>
+        <MovieList title='Now Playing' movies={nowPlayingMovies} sliceTitle={'nowPlayingMovies'} />
+        <MovieList title='Top Rated' movies={topRatedMovies} sliceTitle={'topRatedMovies'} />
+        <MovieList title='Trending' movies={popularMovies} sliceTitle={'popularMovies'}/>
+        <MovieList title='Up Coming' movies={upComingMovies} sliceTitle={'upComingMovies'}/>
 
       </div>
     </div>

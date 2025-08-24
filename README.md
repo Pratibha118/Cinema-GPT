@@ -47,6 +47,12 @@
     - Memoization
     - Added .env file to gitignore
     - Made application responsive
+    - Added favorite header
+    - Added icons on top of the cards to mark as favorite 
+    - Popup window to show details of movie and play button
+    - Playmovie component to play movies
+    - On user logout reset redux store
+
     
 
 

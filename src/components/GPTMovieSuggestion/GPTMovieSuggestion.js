@@ -6,16 +6,16 @@ const GPTMovieSuggestion = () => {
 
   const { gptMovies, tmdbMovies } = useSelector(state => state.gpt)
   if (!gptMovies) return null;
-
   return (
-    <div className='p-4 m-4 bg-black text-white opacity-80'>
-      <div>
-        {
-          gptMovies.map((movieName, index) => <MovieList key={movieName} title={movieName} movies={tmdbMovies[index]} />)
-        }
+      <div className='p-4 m-4 bg-black text-white opacity-80'>
+        <div>
+          {
+            gptMovies.map((movieName, index) => <MovieList key={movieName} title={movieName} movies={tmdbMovies[index]} />)
+          }
 
-      </div>
-    </div>
+        </div>
+      </div> 
+
   )
 }
 

@@ -13,24 +13,19 @@ const Browse = () => {
   const searchToggle = useSelector(state => state.gpt.showGPTSearch);
 
   useNowPlayingMovies();
-
   usePopular();
-
   useUpComingMovies();
-
   useTopRatedMovies();
 
   return (
     <div>
-      <Header />
+      {/* <Header />
       {searchToggle ? <GPTSearch /> : <>
         <MainContainer />
         <SecondryContainer />
-      </>}
-
-
-
-
+      </>} */}
+      <MainContainer />
+        <SecondryContainer />
     </div>
   )
 }

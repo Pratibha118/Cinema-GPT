@@ -11,7 +11,7 @@ export const GPTSearch = () => {
         <img src={BACKGROUND_IMG} className='h-screen md:h-[100%] object-cover'
           alt='background-img' />
       </div>
-      <div className='pt-[35%] md:pt-[10%]'>
+      <div className='pt-[60%] md:pt-[10%]'>
         <GPTSearchBar />
         <GPTMovieSuggestion />
       </div>

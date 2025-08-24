@@ -24,11 +24,26 @@ const movieSlice = createSlice({
         },
         addUpcomingMovies: (state, action) => {
             state.upComingMovies = action.payload
-        }
+        },
+        toggleFavorite: (state, action) => {
+            const { id, sliceTitle } = action.payload;
+            state[sliceTitle] = state?.[sliceTitle]?.map((movie) => {
+                return movie.id === id ? { ...movie, favorite: !movie.favorite } : movie
+            }
+            )
 
+        },
+        removeMovies: (state, action) => {
+            state.nowPlayingMovies = null
+            state.popularMovies = null
+            state.topRatedMovies = null
+            state.upComingMovies = null
+            state.trailorKey = null
+        }
     }
 })
 
-export const { addNowPlayingMovies, addTrailorKey, addPopularMovies, addTopRatedMovies, addUpcomingMovies } = movieSlice.actions
+export const { addNowPlayingMovies, addTrailorKey, addPopularMovies, addTopRatedMovies,
+    addUpcomingMovies, toggleFavorite, removeMovies } = movieSlice.actions
 
 export default movieSlice.reducer;

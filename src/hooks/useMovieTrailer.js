@@ -6,16 +6,15 @@ import { API_OPTIONS } from '../utils/constants';
 export const useMovieTrailer = (movieId) => {
     const dispatch = useDispatch();
 
-    const isTrailorAvailable = useSelector(state => state.movies.trailorKey)
-
     const getMovieTrailor = async () => {
         const data = await fetch(`https://api.themoviedb.org/3/movie/${movieId}/videos?language=en-US`, API_OPTIONS)
         const json = await data.json();
+        console.log(json)
         dispatch(addTrailorKey(json?.results[0]))
     }
 
     useEffect(() => {
-        !isTrailorAvailable && getMovieTrailor();
+         getMovieTrailor();
     }, [])
 
 }

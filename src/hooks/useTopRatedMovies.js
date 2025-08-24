@@ -12,7 +12,13 @@ export const useTopRatedMovies = () =>{
   const getTopRatedMovies = async () =>{
     const data = await fetch('https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1',API_OPTIONS)
     const json = await data.json();
-    dispatch(addTopRatedMovies(json.results))
+     const updatedData = json.results.map((movie) => {
+      return {
+        ...movie,
+        favorite: false,
+      }
+    })
+    dispatch(addTopRatedMovies(updatedData))
   }
 
   useEffect(()=>{

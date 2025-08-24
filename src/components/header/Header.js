@@ -4,9 +4,10 @@ import { auth } from '../../utils/firebase';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { addUser, removeUser } from '../../utils/slices/userSlice';
-import { LOGO, SUPPORTED_LANGUAGES } from '../../utils/constants';
-import { toggleGPTSearchView } from '../../utils/slices/GPTSlice';
+import { SUPPORTED_LANGUAGES } from '../../utils/constants';
+import { toggleGPTSearchView, removeSearch } from '../../utils/slices/GPTSlice';
 import { switchLanguage } from '../../utils/slices/configSlice';
+import { removeMovies } from '../../utils/slices/movieSlice'
 
 const Header = () => {
   const navigate = useNavigate()
@@ -25,6 +26,8 @@ const Header = () => {
       } else {
         // User is signed out
         dispatch(removeUser())
+        dispatch(removeMovies())
+        dispatch(removeSearch())
         navigate('/')
 
       }
@@ -45,26 +48,48 @@ const Header = () => {
   }
 
   const handleSearch = () => {
-    dispatch(toggleGPTSearchView())
+    dispatch(toggleGPTSearchView(true))
+    navigate('/search')
   }
 
   const handleLanguageChange = (e) => {
     dispatch(switchLanguage(e.target.value))
   }
 
+  const handleFavorite = () => {
+    dispatch(toggleGPTSearchView(false))
+    navigate('/favorites')
+  }
+
+  const handleHome = () => {
+    dispatch(toggleGPTSearchView(false))
+    navigate('/browse')
+  }
+
   return (
     <div className='absolute w-full px-8 py-2 bg-black opacity-80 z-10 flex flex-col md:flex-row md:justify-between '>
       <img
         className='w-36 mx-auto md:mx-0'
-        src={LOGO}
+        src='\Cinema-GPT-Logo.png'
         alt='logo' />
       {
         user ?
           <div className='mx-auto md:mx-0'>
 
+            <button onClick={handleHome}
+              className='bg-black border z-50 border-white text-white mx-2 my-4 p-1 rounded-lg shadow-sm border-none font-bold'>
+              Home
+            </button>
+
+            <button onClick={handleFavorite}
+              className='bg-black border z-50 border-white text-white mx-2 my-4 p-1 rounded-lg shadow-sm border-none font-bold'>
+              Favorites
+            </button>
+
             <button onClick={handleSearch}
               className='bg-black border z-50 border-white text-white mx-2 my-4 p-1 rounded-lg shadow-sm border-none font-bold'>
-              {searchToggle ? 'Home' : 'Search'}
+              {/* {searchToggle ? 'Home' : 'Search'} */}
+              AI 🔎
             </button>
 
             {searchToggle ?
@@ -84,15 +109,15 @@ const Header = () => {
               : <></>
             }
 
-            
+
             {/* <span className='text-white font-bold'>{user?.displayName}</span> */}
 
             <select className='mx-2 my-4 p-1 bg-black text-white font-bold ' onChange={handleSignOut}>
-              <option selected>{user?.displayName}</option>
+              <option defaultValue={user?.displayName}>{user?.displayName}</option>
               <option className='hover:bg-gray-600'>
-                <button className='bg-red-600 text-white mx-2 my-4 p-1 rounded-lg shadow-sm'>
-                  Sign out
-                </button>
+                {/* <button className='bg-red-600 text-white mx-2 my-4 p-1 rounded-lg shadow-sm'> */}
+                Sign out
+                {/* </button> */}
               </option>
             </select>
           </div>
